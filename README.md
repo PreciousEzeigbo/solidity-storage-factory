@@ -66,3 +66,25 @@ To deploy these contracts, you would typically use a tool like Remix IDE, Hardha
 5.  Select `StorageFactory` from the contract dropdown and click "Deploy".
 6.  Once `StorageFactory` is deployed, you can interact with its `createSimpleStorageContract` function.
 7.  After calling `createSimpleStorageContract`, you can query the `mySimpleStorage` public variable to get the address of the newly deployed `SimpleStorage` instance.
+
+## 📝 Contract Details
+
+### `StorageFactory.sol`
+
+This contract acts as a factory for deploying `SimpleStorage` contracts.
+
+* `mySimpleStorage`: A public state variable of type `SimpleStorage` that stores the address of the *last* `SimpleStorage` contract deployed by this factory.
+* `createSimpleStorageContract()`: A public function that deploys a new instance of `SimpleStorage` and updates `mySimpleStorage` with its address.
+
+### `SimpleStorage.sol`
+
+This contract is a versatile example demonstrating various Solidity features for data storage.
+
+* `myFavoriteNumber`: A `uint256` state variable to store a single number.
+* `Person` struct: Defines a structure to hold `favoriteNumber` and `name` for a person.
+* `listOfPeople`: A public dynamic array of `Person` structs to store multiple person records.
+* `nameToFavoriteNumber`: A public mapping that associates a `string` name with a `uint256` favorite number.
+* `store(uint256 _favoriteNumber)`: A function to set the `myFavoriteNumber`. Marked `virtual` (though not overridden here).
+* `retrieve()`: A `view` function to get the current `myFavoriteNumber`.
+* `addPerson(string memory _name, uint256 _favoriteNumber)`: Adds a new `Person` to `listOfPeople` and updates the `nameToFavoriteNumber` mapping.
+* `SimpleStorage2`, `SimpleStorage3`, `SimpleStorage4`: These are empty contract declarations within the same file, demonstrating how multiple contracts can coexist in a single `.sol` file.
